@@ -4,73 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MemeCoinLauncher</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(180deg, #0b0c3a 0%, #1b004c 100%);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    header {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .logo {
-      width: 120px;
-      height: auto;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 28px;
-      color: #ffffff;
-      margin-bottom: 10px;
-    }
-
-    p.subtext {
-      font-size: 14px;
-      color: #cccccc;
-      margin-bottom: 30px;
-    }
-
-    .cta-button {
-      padding: 14px 28px;
-      font-size: 16px;
-      background: #9a4eff;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      box-shadow: 0 0 10px #9a4eff;
-    }
-
-    .cta-button:hover {
-      background: #b974ff;
-    }
-
-    .full-width-image {
-      width: 100%;
-      margin-top: 40px;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <img class="logo" src="assets/logo.png" alt="MemeCoinLauncher Logo" />
-    <h1>Launch Your Meme Coin in Seconds</h1>
-    <p class="subtext">No coding needed. All automated. Built for viral success.</p>
-    <button class="cta-button" onclick="location.href='signup.html'">Get Started</button>
+  <header class="header">
+    <div class="logo-container">
+      <img src="logo.png" alt="MemeCoinLauncher Logo" class="logo" />
+      <h1 class="site-title">MemeCoinLauncher</h1>
+    </div>
+    <nav>
+      <button class="btn">Sign Up</button>
+      <button class="btn">Login</button>
+    </nav>
   </header>
 
-  <img class="full-width-image" src="assets/background-showcase.jpg" alt="Meme Showcase" />
+  <section class="hero">
+    <h2 class="hero-title">Launch Your Meme Coin in Seconds</h2>
+    <p class="hero-subtitle">Create, manage, and grow your meme coin effortlessly.</p>
+  </section>
+
+  <section class="image-upload">
+    <img src="showcase-image.jpg" alt="MemeCoin Showcase" class="showcase-img" />
+  </section>
+
+  <section class="testimonials">
+    <h3>What our users say 💬</h3>
+    <div class="testimonial">
+      <p>"Amazing platform! I launched my first meme coin in minutes 🚀"</p>
+      <p>- CoinStarter</p>
+    </div>
+    <div class="testimonial">
+      <p>"Super easy and the design feels top-notch! 🔥"</p>
+      <p>- MemeKing</p>
+    </div>
+  </section>
 </body>
 </html>
