@@ -2,91 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MemeCoinLauncher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      overflow-x: hidden;
-      color: white;
+      box-sizing: border-box;
     }
 
-    header {
-      text-align: center;
-      padding: 40px 20px 10px;
-    }
-
-    header img {
-      max-width: 200px;
-      filter: drop-shadow(0 0 12px #a084dc);
-    }
-
-    .buttons {
-      margin-top: 20px;
-    }
-
-    .buttons a {
-      text-decoration: none;
-      margin: 10px;
-      padding: 14px 28px;
-      background: #6c63ff;
-      color: white;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-
-    .buttons a:hover {
-      background: #8577ff;
-    }
-
-    .floating-coins {
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #0d0d26, #190933);
+      overflow: hidden;
+      height: 100vh;
       position: relative;
-      width: 100%;
-      height: 400px;
-      margin-top: 40px;
+      color: white;
     }
 
-    .coin {
+    .logo {
+      width: 180px;
+      margin: 20px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      color: #fff;
+      text-shadow: 0 0 20px #a020f0;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      color: #ccc;
+    }
+
+    .cta {
+      margin-top: 30px;
+    }
+
+    .cta button {
+      padding: 15px 30px;
+      font-size: 1rem;
+      background: linear-gradient(90deg, #6a00f4, #ba00ff);
+      border: none;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(186, 0, 255, 0.6);
+      transition: 0.3s;
+    }
+
+    .cta button:hover {
+      transform: scale(1.05);
+    }
+
+    .floating-coins img {
       position: absolute;
       width: 70px;
-      animation: float 8s infinite ease-in-out;
-      opacity: 0.9;
+      animation: float 10s infinite ease-in-out;
     }
 
     @keyframes float {
-      0% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-40px) rotate(180deg); }
+      0%   { transform: translateY(0px) rotate(0deg); }
+      50%  { transform: translateY(-40px) rotate(180deg); }
       100% { transform: translateY(0px) rotate(360deg); }
     }
 
-    .coin:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
-    .coin:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
-    .coin:nth-child(3) { bottom: 10%; left: 20%; animation-delay: 2s; }
-    .coin:nth-child(4) { bottom: 15%; right: 10%; animation-delay: 3s; }
+    .coin1 { top: 10%; left: 10%; animation-delay: 0s; }
+    .coin2 { top: 30%; left: 80%; animation-delay: 2s; }
+    .coin3 { top: 60%; left: 20%; animation-delay: 4s; }
+    .coin4 { top: 80%; left: 70%; animation-delay: 6s; }
+
   </style>
 </head>
 <body>
+  <img src="logo.png" alt="MemeCoinLauncher Logo" class="logo" />
 
-  <header>
-    <!-- Replace with your logo image -->
-    <img src="logo.png" alt="MemeCoinLauncher Logo" />
-    <div class="buttons">
-      <a href="signup.html">Sign Up</a>
-      <a href="login.html">Login</a>
+  <div class="hero">
+    <h1>Launch Your Meme Coin In Minutes</h1>
+    <p>Join the revolution. Build. Launch. Meme the world.</p>
+    <div class="cta">
+      <button onclick="location.href='signup.html'">Sign Up</button>
     </div>
-  </header>
-
-  <div class="floating-coins">
-    <!-- Replace these src paths with your meme coin image filenames -->
-    <img src="coin1.png" class="coin" alt="Coin 1" />
-    <img src="coin2.png" class="coin" alt="Coin 2" />
-    <img src="coin3.png" class="coin" alt="Coin 3" />
-    <img src="coin4.png" class="coin" alt="Coin 4" />
   </div>
 
+  <div class="floating-coins">
+    <img src="meme1.png" class="coin1" alt="Meme Coin 1">
+    <img src="meme2.png" class="coin2" alt="Meme Coin 2">
+    <img src="meme3.png" class="coin3" alt="Meme Coin 3">
+    <img src="meme4.png" class="coin4" alt="Meme Coin 4">
+  </div>
 </body>
 </html>
