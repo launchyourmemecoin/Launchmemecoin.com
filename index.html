@@ -4,120 +4,100 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MemeCoinLauncher</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap">
   <style>
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #0a0f2c, #1b0c2e);
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to bottom right, #0e0a1b, #1e1440);
       color: white;
-      overflow-x: hidden;
     }
 
-    nav {
+    header {
       display: flex;
-      justify-content: center;
-      padding: 1.2rem;
-      background-color: rgba(10, 15, 44, 0.9);
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: transparent;
     }
 
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
       color: rgba(255, 255, 255, 0.5);
-      font-weight: 600;
+      text-decoration: none;
+      font-size: 14px;
       transition: color 0.3s;
     }
 
-    nav a:hover {
-      color: #b78cf4;
+    .nav-links a:hover {
+      color: white;
     }
 
-    .hero {
+    .auth-buttons button {
+      margin-left: 20px;
+      padding: 10px 20px;
+      background-color: #6f42c1;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .auth-buttons button:hover {
+      background-color: #7d52d9;
+    }
+
+    .main {
       text-align: center;
-      padding: 4rem 1rem 2rem;
+      padding: 80px 20px 40px;
     }
 
-    .hero img.logo {
-      max-width: 180px;
-      margin-bottom: 1.5rem;
+    .main h1 {
+      font-size: 38px;
+      font-weight: 600;
+      margin-bottom: 10px;
     }
 
-    .hero h1 {
-      font-size: 2rem;
-      margin: 0;
-    }
-
-    .hero p {
-      margin-top: 0.75rem;
-      font-size: 0.95rem;
+    .main p {
+      font-size: 14px;
       color: rgba(255, 255, 255, 0.7);
     }
 
-    .review-section {
-      padding: 3rem 1rem;
-      background-color: rgba(15, 20, 55, 0.9);
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .review-card {
-      background: #151a3c;
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 0 10px rgba(183, 140, 244, 0.1);
-    }
-
-    .review-card h3 {
-      margin-top: 0;
-      color: #b78cf4;
-    }
-
-    .review-card p {
-      color: #ccc;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.4);
+    .hero-image {
+      width: 100%;
+      max-width: 1000px;
+      margin: 40px auto;
+      display: block;
+      border-radius: 15px;
+      box-shadow: 0 0 40px rgba(111, 66, 193, 0.5);
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="#">Launch</a>
-    <a href="#">New Coins</a>
-    <a href="#">Trending Coins</a>
-    <a href="#">Holding</a>
-    <a href="#">About Us</a>
-  </nav>
-
-  <section class="hero">
-    <img src="logo.png" alt="MemeCoinLauncher Logo" class="logo" />
+  <header>
+    <img src="logo.png" alt="MemeCoinLauncher Logo" style="height: 50px;" />
+    <nav class="nav-links">
+      <a href="#">Launch</a>
+      <a href="#">New Coins</a>
+      <a href="#">Trending Coins</a>
+      <a href="#">Holdin</a>
+      <a href="#">About Us</a>
+    </nav>
+    <div class="auth-buttons">
+      <button>Sign Up</button>
+      <button>Login</button>
+    </div>
+  </header>
+  <section class="main">
     <h1>Launch Your Meme Coin in Seconds</h1>
-    <p>No code required – we handle everything from smart contracts to token deployment.</p>
+    <p>No coding. No hassle. Just pure meme power.</p>
+    <img src="landing-image.jpg" alt="Landing Visual" class="hero-image" />
   </section>
-
-  <section class="review-section">
-    <div class="review-card">
-      <h3>@CryptoCat</h3>
-      <p>"MemeCoinLauncher made it so easy to launch my token. Loved the interface!"</p>
-    </div>
-    <div class="review-card">
-      <h3>@TokenTom</h3>
-      <p>"Quick, clean, and professional. Everything I needed in one place."</p>
-    </div>
-    <div class="review-card">
-      <h3>@MoonMeme</h3>
-      <p>"Highly recommend! Smooth process and great design."</p>
-    </div>
-  </section>
-
-  <footer>
-    &copy; 2025 MemeCoinLauncher. All rights reserved.
-  </footer>
 </body>
 </html>
