@@ -4,92 +4,122 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MemeCoin Launcher</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(circle at center, #1e034d, #0d021f);
-      color: white;
-      text-align: center;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0b0e1c; /* Deep navy blue with purple hint */
+      color: #ffffff;
     }
 
     nav {
       display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 2rem 0 1rem 0;
-    }
-
-    nav a {
-      color: rgba(255, 255, 255, 0.6);
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: white;
-    }
-
-    .logo-section {
-      margin-top: 2rem;
-    }
-
-    .logo-section img {
-      width: 280px;
-      max-width: 80vw;
-    }
-
-    .button-container {
-      margin-top: 2rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .btn {
-      padding: 0.8rem 2rem;
-      border-radius: 2rem;
-      font-weight: bold;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .btn-signup {
-      background: linear-gradient(90deg, #d26dfc, #b46cf3);
-      border: none;
-      color: white;
-    }
-
-    .btn-login {
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 3rem;
       background: transparent;
-      border: 2px solid #b46cf3;
-      color: white;
     }
 
-    .btn-login:hover {
-      background: #b46cf3;
-      color: black;
+    nav .links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav .links a {
+      color: #aaaaaa;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    nav .links a:hover {
+      color: #ffffff;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+    }
+
+    .hero img.logo {
+      max-width: 160px;
+      height: auto;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #cccccc;
+    }
+
+    .review-section {
+      margin-top: 4rem;
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .review-section h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .review {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.03);
+      border-left: 4px solid #6b4eff;
+      border-radius: 8px;
+      color: #dddddd;
+    }
+
+    @media screen and (max-width: 768px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero p {
+        font-size: 0.9rem;
+      }
+      nav .links {
+        gap: 1.2rem;
+      }
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="#launch">Launch</a>
-    <a href="#newcoins">New coins</a>
-    <a href="#trending">Trending coins</a>
-    <a href="#holding">Holding</a>
-    <a href="#about">About us</a>
+    <div class="links">
+      <a href="#">Launch</a>
+      <a href="#">New Coins</a>
+      <a href="#">Trending Coins</a>
+      <a href="#">Holdin</a>
+      <a href="#">About Us</a>
+    </div>
   </nav>
 
-  <div class="logo-section">
-    <img src="logo.png" alt="MemeCoin Launcher Logo" />
-  </div>
+  <section class="hero">
+    <img src="logo.png" alt="MemeCoin Launcher Logo" class="logo">
+    <h1>Launch your meme coin in seconds</h1>
+    <p>Fast. Easy. No coding required.</p>
+  </section>
 
-  <div class="button-container">
-    <button class="btn btn-signup">SIGN UP</button>
-    <button class="btn btn-login">LOGIN</button>
-  </div>
+  <section class="review-section">
+    <h2>User Testimonials</h2>
+    <div class="review">“This was the easiest launch I’ve ever done. Highly recommend!”</div>
+    <div class="review">“The interface is smooth and very user-friendly.”</div>
+    <div class="review">“A must-use for any meme coin creator.”</div>
+  </section>
 </body>
 </html>
