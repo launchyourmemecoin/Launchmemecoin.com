@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MemeCoinLauncher Auth</title>
+  <title>Login | MemeCoinLauncher</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyCLIgCLwkL5Jwobq3ljhchk3bmrvLXANyU",
@@ -22,20 +22,6 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    // Handle sign up
-    window.handleSignUp = async () => {
-      const email = document.getElementById("signup-email").value;
-      const password = document.getElementById("signup-password").value;
-      try {
-        await createUserWithEmailAndPassword(auth, email, password);
-        alert("Sign up successful!");
-        window.location.href = "dashboard.html";
-      } catch (error) {
-        alert(error.message);
-      }
-    };
-
-    // Handle login
     window.handleLogin = async () => {
       const email = document.getElementById("login-email").value;
       const password = document.getElementById("login-password").value;
@@ -47,21 +33,6 @@
         alert(error.message);
       }
     };
-
-    // Check auth state
-    onAuthStateChanged(auth, (user) => {
-      const status = document.getElementById("status");
-      if (user && status) {
-        status.innerText = `Logged in as: ${user.email}`;
-      }
-    });
-
-    // Handle logout
-    window.logout = async () => {
-      await signOut(auth);
-      alert("Logged out!");
-      window.location.href = "index.html";
-    }
   </script>
   <style>
     body {
@@ -81,7 +52,6 @@
       box-shadow: 0 0 20px rgba(66, 135, 245, 0.3);
       width: 90%;
       max-width: 400px;
-      margin-bottom: 2rem;
     }
     input {
       width: 100%;
@@ -103,13 +73,14 @@
       cursor: pointer;
       font-weight: 600;
     }
+  </style>
+</head>
+<body>
   <div class="form">
     <h2>Login</h2>
     <input type="email" id="login-email" placeholder="Email" />
     <input type="password" id="login-password" placeholder="Password" />
     <button onclick="handleLogin()">Login</button>
   </div>
-
-  <p id="status"></p>
 </body>
 </html>
