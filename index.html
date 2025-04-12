@@ -6,23 +6,35 @@
   <title>MemeCoinLauncher</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --deep-navy: #0b0f1a; /* Sampled from your logo background */
+      --logo-blue: #3e6df6; /* You can tweak this based on exact blue */
+      --logo-purple: #845ef7;
+      --gradient-blue: linear-gradient(90deg, #3e6df6, #845ef7);
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #0a0f2c, #1b0c2e);
+      background-color: var(--deep-navy);
       color: white;
       overflow-x: hidden;
     }
 
     nav {
       display: flex;
-      justify-content: center;
-      padding: 1.2rem;
-      background-color: rgba(10, 15, 44, 0.9);
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+      background-color: rgba(11, 15, 26, 0.95);
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 20px;
     }
 
     nav a {
-      margin: 0 15px;
       text-decoration: none;
       color: rgba(255, 255, 255, 0.5);
       font-weight: 600;
@@ -30,7 +42,27 @@
     }
 
     nav a:hover {
-      color: #b78cf4;
+      color: var(--logo-blue);
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .auth-buttons button {
+      background: var(--gradient-blue);
+      color: white;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    .auth-buttons button:hover {
+      opacity: 0.85;
     }
 
     .hero {
@@ -56,7 +88,7 @@
 
     .review-section {
       padding: 3rem 1rem;
-      background-color: rgba(15, 20, 55, 0.9);
+      background-color: rgba(20, 25, 40, 0.9);
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
@@ -71,7 +103,9 @@
 
     .review-card h3 {
       margin-top: 0;
-      color: #b78cf4;
+      background: var(--gradient-blue);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .review-card p {
@@ -88,18 +122,25 @@
 </head>
 <body>
   <nav>
-    <a href="#">Launch</a>
-    <a href="#">New Coins</a>
-    <a href="#">Trending Coins</a>
-    <a href="#">Holding</a>
-    <a href="#">About Us</a>
+    <div class="nav-links">
+      <a href="#">Launch</a>
+      <a href="#">New Coins</a>
+      <a href="#">Trending Coins</a>
+      <a href="#">Holding</a>
+      <a href="#">About Us</a>
+    </div>
+    <div class="auth-buttons">
+      <button>Sign Up</button>
+      <button>Login</button>
+    </div>
   </nav>
+
   <section class="hero">
     <img src="logo.png" alt="MemeCoinLauncher Logo" class="logo" />
     <h1>Launch Your Meme Coin in Seconds</h1>
     <p>No code required – we handle everything from smart contracts to token deployment.</p>
   </section>
-     <div class="auth-buttons">
+
   <section class="review-section">
     <div class="review-card">
       <h3>@CryptoCat</h3>
