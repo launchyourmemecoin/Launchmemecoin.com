@@ -3,40 +3,93 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MemeCoinLauncher</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>MemeCoin Launcher</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at center, #1e034d, #0d021f);
+      color: white;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem 0 1rem 0;
+    }
+
+    nav a {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .logo-section {
+      margin-top: 2rem;
+    }
+
+    .logo-section img {
+      width: 280px;
+      max-width: 80vw;
+    }
+
+    .button-container {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.8rem 2rem;
+      border-radius: 2rem;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-signup {
+      background: linear-gradient(90deg, #d26dfc, #b46cf3);
+      border: none;
+      color: white;
+    }
+
+    .btn-login {
+      background: transparent;
+      border: 2px solid #b46cf3;
+      color: white;
+    }
+
+    .btn-login:hover {
+      background: #b46cf3;
+      color: black;
+    }
+  </style>
 </head>
 <body>
-  <header class="header">
-    <div class="logo-container">
-      <img src="logo.png" alt="MemeCoinLauncher Logo" class="logo" />
-      <h1 class="site-title">MemeCoinLauncher</h1>
-    </div>
-    <nav>
-      <button class="btn">Sign Up</button>
-      <button class="btn">Login</button>
-    </nav>
-  </header>
+  <nav>
+    <a href="#launch">Launch</a>
+    <a href="#newcoins">New coins</a>
+    <a href="#trending">Trending coins</a>
+    <a href="#holding">Holding</a>
+    <a href="#about">About us</a>
+  </nav>
 
-  <section class="hero">
-    <h2 class="hero-title">Launch Your Meme Coin in Seconds</h2>
-    <p class="hero-subtitle">Create, manage, and grow your meme coin effortlessly.</p>
-  </section>
+  <div class="logo-section">
+    <img src="logo.png" alt="MemeCoin Launcher Logo" />
+  </div>
 
-  <section class="image-upload">
-    <img src="showcase-image.jpg" alt="MemeCoin Showcase" class="showcase-img" />
-  </section>
-
-  <section class="testimonials">
-    <h3>What our users say 💬</h3>
-    <div class="testimonial">
-      <p>"Amazing platform! I launched my first meme coin in minutes 🚀"</p>
-      <p>- CoinStarter</p>
-    </div>
-    <div class="testimonial">
-      <p>"Super easy and the design feels top-notch! 🔥"</p>
-      <p>- MemeKing</p>
-    </div>
-  </section>
+  <div class="button-container">
+    <button class="btn btn-signup">SIGN UP</button>
+    <button class="btn btn-login">LOGIN</button>
+  </div>
 </body>
 </html>
