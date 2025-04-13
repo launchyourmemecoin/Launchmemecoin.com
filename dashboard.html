@@ -6,133 +6,151 @@
   <title>Dashboard | MemeCoinLauncher</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --black: #000;
+      --logo-blue: #3e6df6;
+      --logo-purple: #845ef7;
+      --gradient-blue: linear-gradient(90deg, #3e6df6, #845ef7);
+    }
+
     body {
-      margin: 0;
+      background-color: var(--black);
       font-family: 'Inter', sans-serif;
-      background: #0b0f1a;
-      color: #fff;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #0a0a0a;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--logo-blue);
+      border-bottom: 1px solid #222;
+    }
+
+    .balance-section {
+      text-align: center;
       padding: 2rem;
     }
-    .balance {
-      text-align: center;
-      margin-bottom: 2rem;
+
+    .balance-card {
+      background: #111;
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(132, 94, 247, 0.2);
     }
-    .balance h1 {
-      font-size: 3rem;
+
+    .balance-card h2 {
       margin: 0;
+      font-size: 1.5rem;
     }
-    .balance .details {
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 1.2rem;
+
+    .balance-card p {
+      color: #aaa;
+      margin-top: 0.5rem;
     }
-    .actions {
+
+    .button-row {
       display: flex;
       justify-content: center;
       gap: 1rem;
-      margin-bottom: 2rem;
+      margin-top: 1.5rem;
     }
-    .actions button {
-      padding: 0.75rem 1.5rem;
-      background: linear-gradient(to right, #3e6df6, #845ef7);
-      border: none;
-      border-radius: 8px;
+
+    button, .popup button {
+      background: var(--gradient-blue);
       color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
       font-weight: 600;
       cursor: pointer;
     }
+
+    .launcher-section {
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .launcher-section input {
+      display: block;
+      width: 100%;
+      margin-top: 0.75rem;
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: none;
+      background: #1a1a1a;
+      color: white;
+    }
+
+    .launcher-section h3 {
+      margin-bottom: 1rem;
+    }
+
     .popup {
-      display: none;
       position: fixed;
-      top: 30%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       background: #111;
       padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 25px rgba(66, 135, 245, 0.5);
-      z-index: 100;
-      text-align: center;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(132, 94, 247, 0.4);
+      display: none;
+      z-index: 10;
     }
+
     .popup.show {
       display: block;
     }
-    .launcher {
-      background: #111;
-      padding: 2rem;
-      border-radius: 12px;
-      margin-top: 2rem;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .launcher input, .launcher button {
-      display: block;
-      width: 100%;
-      margin-bottom: 1rem;
-      padding: 0.75rem;
-      border-radius: 8px;
-      border: none;
-    }
-    .launcher input {
-      background: #222;
-      color: white;
-    }
-    .upload-box {
-      border: 2px dashed #666;
-      background: #1a1a1a;
-      text-align: center;
-      padding: 1rem;
-      cursor: pointer;
-    }
-    .upload-box:hover {
-      background: #2a2a2a;
+
+    .popup p {
+      margin-bottom: 1.5rem;
     }
   </style>
 </head>
 <body>
-  <div class="balance">
-    <h1>$0.00</h1>
-    <div class="details">+$0.00 &nbsp;&nbsp; +0.00%</div>
-  </div>
+  <header>MemeCoinLauncher Dashboard</header>
 
-  <div class="actions">
-    <button>Deposit</button>
-    <button>Withdraw</button>
-  </div>
+  <section class="balance-section">
+    <div class="balance-card">
+      <h2>Your Balance: $0.00</h2>
+      <p>Keep track of your earnings and deposits.</p>
+      <div class="button-row">
+        <button onclick="alert('Redirecting to deposit...')">Deposit</button>
+        <button onclick="alert('Redirecting to withdraw...')">Withdraw</button>
+      </div>
+    </div>
+  </section>
 
-  <div class="popup" id="bonus-popup">
-    <p><strong>Get 100% bonus on your first deposit</strong><br>Deposit $50 and launch 2 coins</p>
-    <button onclick="window.location.href='deposit.html'">Deposit</button>
-    <button onclick="document.getElementById('bonus-popup').classList.remove('show')">Later</button>
-  </div>
-
-  <div class="launcher">
+  <section class="launcher-section">
     <h3>Meme Coin Launcher</h3>
-    <input type="text" placeholder="Token Name" />
-    <input type="text" placeholder="Token Symbol" />
-    <div class="upload-box">Click to upload or drag and drop<br><small>PNG or JPG. Max 5MB.</small></div>
-    <button onclick="showLaunchPopup()">Launch to Phantom Wallet</button>
-  </div>
+    <input type="text" placeholder="Coin Name" />
+    <input type="text" placeholder="Symbol" />
+    <input type="number" placeholder="Total Supply" />
+    <button onclick="alert('Launching to Phantom Wallet...')">Launch to Phantom Wallet</button>
+  </section>
 
-  <div class="popup" id="launch-popup">
-    <p><strong>Instructions:</strong><br>
-      - Create your coin<br>
-      - Deposit<br>
-      - Connect Meme Coin Launcher to Phantom Wallet<br>
-      - Coin will be launched 5 minutes after<br>
-      - You can withdraw the coin whenever you want<br>
-      <br><strong>Note:</strong> If your investors will be at risk of losing all their money.</p>
-    <button onclick="document.getElementById('launch-popup').classList.remove('show')">Got it</button>
+  <div class="popup" id="bonusPopup">
+    <p><strong>🎉 Get 100% Bonus!</strong><br />Deposit $50 and launch 2 coins.</p>
+    <div class="button-row">
+      <button onclick="alert('Redirecting to deposit...')">Deposit Now</button>
+      <button onclick="document.getElementById('bonusPopup').classList.remove('show')">Later</button>
+    </div>
   </div>
 
   <script>
-    setTimeout(() => {
-      document.getElementById('bonus-popup').classList.add('show');
-    }, 5000);
-
-    function showLaunchPopup() {
-      document.getElementById('launch-popup').classList.add('show');
-    }
+    window.onload = () => {
+      setTimeout(() => {
+        document.getElementById('bonusPopup').classList.add('show');
+      }, 5000);
+    };
   </script>
 </body>
 </html>
