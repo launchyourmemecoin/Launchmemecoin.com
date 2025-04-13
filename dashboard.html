@@ -1,155 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MemeCoinLauncher Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <title>Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
+      margin: 0;
+      padding: 0;
       background-color: #0A0A0A;
       color: white;
       font-family: 'Inter', sans-serif;
-      margin: 0;
-      padding: 0;
     }
 
     .container {
+      max-width: 480px;
+      margin: 20px auto;
+      padding: 16px;
+    }
+
+    .balance-section {
+      background-color: #111;
       padding: 20px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .balance {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .balance h1 {
-      font-size: 40px;
-      margin: 0;
-    }
-
-    .balance p {
-      color: #ccc;
-      margin: 4px 0;
-    }
-
-    .btn {
-      background: linear-gradient(90deg, #6D28D9, #7C3AED);
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      margin: 5px;
       border-radius: 12px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      opacity: 0.9;
-    }
-
-    .button-group {
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 16px;
+    }
+
+    .balance-section h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #ccc;
+    }
+
+    .balance-amount {
+      font-size: 28px;
+      font-weight: 600;
+      color: #00ffcc;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 12px;
+    }
+
+    .action-buttons button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background-color: #5b21b6;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .action-buttons button:hover {
+      background-color: #6d28d9;
     }
 
     .launcher {
-      background-color: #141414;
+      background-color: #111;
       padding: 20px;
-      border-radius: 20px;
-    }
-
-    .launcher input {
-      width: 100%;
-      margin-bottom: 15px;
-      padding: 10px;
-      border-radius: 10px;
-      border: none;
-      background: #1E1E1E;
-      color: white;
-      font-size: 16px;
-    }
-
-    .upload-box {
-      background: #1E1E1E;
-      border: 2px dashed #3B3B3B;
       border-radius: 12px;
-      padding: 30px;
-      text-align: center;
-      color: #999;
+      margin-top: 20px;
     }
 
-    .popup {
-      position: fixed;
-      top: 0;
-      left: 0;
+    .launcher h2 {
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #ccc;
+    }
+
+    .launcher input, .launcher textarea {
       width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border: none;
+      background-color: #1f1f1f;
+      color: white;
     }
 
-    .popup-content {
-      background-color: #1E1E1E;
-      padding: 30px;
-      border-radius: 20px;
-      text-align: center;
+    .launcher button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background-color: #5b21b6;
       color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .launcher button:hover {
+      background-color: #6d28d9;
     }
   </style>
 </head>
-
 <body>
   <div class="container">
-    <div class="balance">
-      <h1>$0.00</h1>
-      <p>+$0.00 +0.00%</p>
-    </div>
-
-    <div class="button-group">
-      <button class="btn">Deposit</button>
-      <button class="btn">Withdraw</button>
+    <div class="balance-section">
+      <h2>Available Balance</h2>
+      <div class="balance-amount">$0.00</div>
+      <div class="action-buttons">
+        <button onclick="window.location.href='deposit.html'">Deposit</button>
+        <button>Withdraw</button>
+      </div>
     </div>
 
     <div class="launcher">
-      <input type="text" placeholder="Token Name" />
-      <input type="text" placeholder="Token Symbol" />
-      <div class="upload-box">
-        <p><strong>Click to upload</strong> or drag and drop</p>
-        <p>PNG or JPG. Max 5MB.</p>
-      </div>
-      <br />
-      <button class="btn" onclick="location.href='deposit.html'">Launch to Phantom Wallet</button>
+      <h2>Create Your Meme Coin</h2>
+      <input type="text" placeholder="Coin Name" />
+      <input type="text" placeholder="Symbol" />
+      <input type="number" placeholder="Total Supply" />
+      <textarea rows="3" placeholder="Description"></textarea>
+      <button onclick="window.location.href='deposit.html'">Launch to Phantom Wallet</button>
     </div>
   </div>
-
-  <div class="popup" id="bonusPopup">
-    <div class="popup-content">
-      <h2>🎁 100% Bonus on Your First Deposit!</h2>
-      <p>Deposit $50 and launch 2 coins instantly.</p>
-      <button class="btn" onclick="location.href='deposit.html'">Deposit</button>
-      <button class="btn" onclick="closePopup()">Later</button>
-    </div>
-  </div>
-
-  <script>
-    setTimeout(() => {
-      if (!localStorage.getItem("bonusShown")) {
-        document.getElementById("bonusPopup").style.display = "flex";
-        localStorage.setItem("bonusShown", "true");
-      }
-    }, 6000);
-
-    function closePopup() {
-      document.getElementById("bonusPopup").style.display = "none";
-    }
-  </script>
 </body>
-
 </html>
