@@ -3,178 +3,145 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meme Coin Launcher Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <title>MemeCoinLauncher Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --black: #000000;
+      --logo-blue: #3e6df6;
+      --logo-purple: #845ef7;
+      --gradient-blue: linear-gradient(90deg, #3e6df6, #845ef7);
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: #0b0f24;
+      background-color: var(--black);
       color: white;
-      overflow-x: hidden;
     }
+
     .container {
       padding: 2rem;
-      max-width: 800px;
-      margin: auto;
+      max-width: 900px;
+      margin: 0 auto;
     }
-    .balance {
-      text-align: center;
-      margin-top: 40px;
-      margin-bottom: 60px;
-    }
-    .balance h1 {
-      font-size: 3rem;
-      margin: 0;
-    }
-    .balance p {
-      color: #aaa;
-      font-size: 1rem;
-      margin: 10px 0 0;
-    }
-    .launcher-box {
-      background: #181b33;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 0 30px rgba(128, 0, 255, 0.3);
-    }
-    label {
-      display: block;
-      margin-top: 1rem;
-      font-weight: 600;
-    }
-    input[type="text"] {
-      width: 100%;
-      padding: 12px;
-      margin-top: 8px;
-      border-radius: 8px;
-      border: none;
-      background: #101322;
-      color: white;
-      font-size: 1rem;
-    }
-    .upload-box {
-      margin-top: 20px;
-      padding: 40px;
-      border: 2px dashed #444;
+
+    .balance-box {
+      background: #111;
+      padding: 1.5rem;
       border-radius: 12px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 20px rgba(66, 135, 245, 0.2);
       text-align: center;
-      background: #101322;
-      color: white;
     }
-    .upload-box:hover {
-      background: #15172d;
+
+    .balance-box h2 {
+      margin-bottom: 1rem;
     }
-    .buttons {
+
+    .balance-buttons {
       display: flex;
-      justify-content: space-between;
-      margin-top: 2rem;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
     }
-    .buttons a, .launch-btn {
-      flex: 1;
-      text-align: center;
-      padding: 14px;
-      margin: 0 10px;
-      border-radius: 10px;
-      background: linear-gradient(90deg, #7928CA, #FF0080);
+
+    .btn {
+      background: var(--gradient-blue);
       color: white;
-      text-decoration: none;
-      font-weight: bold;
-      cursor: pointer;
+      padding: 0.75rem 1.5rem;
       border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s;
     }
-    .popup-bg {
+
+    .meme-launcher {
+      background: #111;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(132, 94, 247, 0.2);
+    }
+
+    .meme-launcher h3 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .meme-launcher input, .meme-launcher textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: #222;
+      color: white;
+    }
+
+    .popup {
       display: none;
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(6px);
-      justify-content: center;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
       align-items: center;
-      z-index: 999;
+      justify-content: center;
+      z-index: 9999;
     }
-    .popup {
-      background: #181b33;
-      padding: 30px;
-      border-radius: 20px;
+
+    .popup-content {
+      background: #111;
+      padding: 2rem;
+      border-radius: 12px;
       text-align: center;
-      width: 90%;
-      max-width: 400px;
+      box-shadow: 0 0 20px rgba(132, 94, 247, 0.3);
     }
-    .popup h2 {
-      margin-bottom: 10px;
-    }
-    .popup p {
-      color: #ccc;
-    }
-    .popup .buttons a {
-      margin: 10px 5px 0;
+
+    .popup-content p {
+      margin-bottom: 1.5rem;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="balance">
-      <h1>$0.00</h1>
-      <p>+$0.00 +0.00%</p>
+    <div class="balance-box">
+      <h2>Balance: $0.00</h2>
+      <div class="balance-buttons">
+        <button class="btn">Deposit</button>
+        <button class="btn">Withdraw</button>
+      </div>
     </div>
 
-    <div class="launcher-box">
-      <label>Token Name</label>
-      <input type="text" placeholder="Meme Coin" />
-
-      <label>Token Symbol</label>
-      <input type="text" placeholder="MEME" />
-
-      <label>Token Image</label>
-      <div class="upload-box">
-        <p>Click to upload or drag and drop</p>
-        <p style="font-size: 0.85rem; color: #999">PNG or JPG. Max 5MB.</p>
-      </div>
-
-      <div class="buttons">
-        <a href="deposit.html">Deposit</a>
-        <a href="withdraw.html">Withdraw</a>
-        <button class="launch-btn" onclick="showLaunchPopup()">Launch Meme Coin</button>
-      </div>
+    <div class="meme-launcher">
+      <h3>Launch Your Meme Coin</h3>
+      <input type="text" placeholder="Token Name" />
+      <input type="text" placeholder="Symbol" />
+      <input type="number" placeholder="Supply" />
+      <textarea rows="3" placeholder="Token Description"></textarea>
+      <button class="btn" onclick="location.href='deposit.html'">Launch to Phantom Wallet</button>
     </div>
   </div>
 
-  <div class="popup-bg" id="popup-bg">
-    <div class="popup">
-      <h2>Launch Instructions</h2>
-      <p>
-        1. Create your coin.<br>
-        2. Deposit.<br>
-        3. Connect Meme Coin Launcher to Phantom Wallet.<br>
-        4. Coin will launch in 5 minutes.<br>
-        5. You can withdraw anytime.<br><br>
-        <b>Disclaimer:</b> All investments are at your own risk.
-      </p>
-      <div class="buttons">
-        <a href="deposit.html">Deposit Now</a>
-        <a href="#" onclick="closePopup()">Later</a>
-      </div>
+  <div class="popup" id="bonusPopup">
+    <div class="popup-content">
+      <p><strong>100% Bonus</strong> on your first deposit!<br>Deposit $50 and launch 2 coins.</p>
+      <button class="btn" onclick="location.href='deposit.html'">Deposit</button>
+      <button class="btn" onclick="closePopup()">Later</button>
     </div>
   </div>
 
   <script>
-    // Show launch popup on button click
-    function showLaunchPopup() {
-      document.getElementById('popup-bg').style.display = 'flex';
-    }
+    setTimeout(() => {
+      document.getElementById("bonusPopup").style.display = "flex";
+    }, 5000);
 
     function closePopup() {
-      document.getElementById('popup-bg').style.display = 'none';
+      document.getElementById("bonusPopup").style.display = "none";
     }
-
-    // Auto popup 5 seconds after login
-    window.onload = function () {
-      setTimeout(() => {
-        document.getElementById('popup-bg').style.display = 'flex';
-      }, 5000);
-    };
   </script>
 </body>
 </html>
