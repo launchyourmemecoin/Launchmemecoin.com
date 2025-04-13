@@ -7,150 +7,164 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --black: #000;
+      --black: #000000;
       --logo-blue: #3e6df6;
       --logo-purple: #845ef7;
       --gradient-blue: linear-gradient(90deg, #3e6df6, #845ef7);
     }
 
     body {
-      background-color: var(--black);
-      font-family: 'Inter', sans-serif;
-      color: white;
       margin: 0;
-      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--black);
+      color: white;
+      overflow-x: hidden;
     }
 
     header {
+      padding: 1rem 2rem;
       background-color: #0a0a0a;
-      padding: 1.5rem 2rem;
-      text-align: center;
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--logo-blue);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       border-bottom: 1px solid #222;
     }
 
-    .balance-section {
-      text-align: center;
+    header h1 {
+      font-size: 1.5rem;
+      background: var(--gradient-blue);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .content {
       padding: 2rem;
     }
 
     .balance-card {
       background: #111;
+      padding: 1.5rem;
       border-radius: 16px;
-      padding: 2rem;
-      max-width: 500px;
-      margin: auto;
       box-shadow: 0 0 15px rgba(132, 94, 247, 0.2);
+      margin-bottom: 2rem;
     }
 
     .balance-card h2 {
-      margin: 0;
-      font-size: 1.5rem;
+      margin-top: 0;
     }
 
-    .balance-card p {
-      color: #aaa;
-      margin-top: 0.5rem;
+    .balance-amount {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #fff;
     }
 
-    .button-row {
+    .actions {
+      margin-top: 1rem;
       display: flex;
-      justify-content: center;
       gap: 1rem;
-      margin-top: 1.5rem;
     }
 
-    button, .popup button {
+    .actions button, .popup button, .launcher-section button {
       background: var(--gradient-blue);
       color: white;
       border: none;
-      padding: 0.75rem 1.5rem;
+      padding: 0.6rem 1.5rem;
       border-radius: 8px;
       font-weight: 600;
       cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    .actions button:hover, .popup button:hover, .launcher-section button:hover {
+      opacity: 0.85;
     }
 
     .launcher-section {
+      background: #111;
       padding: 2rem;
-      max-width: 600px;
-      margin: auto;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(66, 135, 245, 0.2);
     }
 
     .launcher-section input {
-      display: block;
       width: 100%;
-      margin-top: 0.75rem;
       padding: 0.75rem;
-      border-radius: 8px;
-      border: none;
-      background: #1a1a1a;
-      color: white;
-    }
-
-    .launcher-section h3 {
       margin-bottom: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: #222;
+      color: white;
     }
 
     .popup {
       position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #111;
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 0 15px rgba(132, 94, 247, 0.4);
+      bottom: 20px;
+      right: 20px;
+      background: #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(66, 135, 245, 0.3);
+      z-index: 100;
       display: none;
-      z-index: 10;
     }
 
-    .popup.show {
-      display: block;
+    .popup h3 {
+      margin: 0 0 0.5rem;
+      background: var(--gradient-blue);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .popup p {
-      margin-bottom: 1.5rem;
+    .popup-buttons {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
     }
   </style>
 </head>
 <body>
-  <header>MemeCoinLauncher Dashboard</header>
+  <header>
+    <h1>Welcome Back, Ready to Launch?</h1>
+  </header>
 
-  <section class="balance-section">
+  <div class="content">
     <div class="balance-card">
-      <h2>Your Balance: $0.00</h2>
-      <p>Keep track of your earnings and deposits.</p>
-      <div class="button-row">
-        <button onclick="alert('Redirecting to deposit...')">Deposit</button>
-        <button onclick="alert('Redirecting to withdraw...')">Withdraw</button>
+      <h2>Your Balance</h2>
+      <div class="balance-amount">$0.00</div>
+      <div class="actions">
+        <button onclick="window.location.href='deposit.html'">Deposit</button>
+        <button onclick="window.location.href='withdraw.html'">Withdraw</button>
       </div>
     </div>
-  </section>
 
-  <section class="launcher-section">
-    <h3>Meme Coin Launcher</h3>
-    <input type="text" placeholder="Coin Name" />
-    <input type="text" placeholder="Symbol" />
-    <input type="number" placeholder="Total Supply" />
-    <button onclick="alert('Launching to Phantom Wallet...')">Launch to Phantom Wallet</button>
-  </section>
+    <div class="launcher-section">
+      <h2>Meme Coin Launcher</h2>
+      <input type="text" placeholder="Coin Name" />
+      <input type="text" placeholder="Symbol (e.g. $MEOW)" />
+      <input type="number" placeholder="Supply" />
+      <input type="text" placeholder="Description" />
+      <button onclick="launchToPhantom()">Launch to Phantom Wallet</button>
+    </div>
+  </div>
 
   <div class="popup" id="bonusPopup">
-    <p><strong>🎉 Get 100% Bonus!</strong><br />Deposit $50 and launch 2 coins.</p>
-    <div class="button-row">
-      <button onclick="alert('Redirecting to deposit...')">Deposit Now</button>
-      <button onclick="document.getElementById('bonusPopup').classList.remove('show')">Later</button>
+    <h3>Get 100% Bonus on Your First Deposit</h3>
+    <p>Deposit $50 and launch 2 coins instantly.</p>
+    <div class="popup-buttons">
+      <button onclick="window.location.href='deposit.html'">Deposit</button>
+      <button onclick="document.getElementById('bonusPopup').style.display='none'">Later</button>
     </div>
   </div>
 
   <script>
-    window.onload = () => {
-      setTimeout(() => {
-        document.getElementById('bonusPopup').classList.add('show');
-      }, 5000);
-    };
+    setTimeout(() => {
+      document.getElementById("bonusPopup").style.display = "block";
+    }, 5000);
+
+    function launchToPhantom() {
+      alert("Launching your coin to Phantom Wallet!\n\nInstructions:\n1. Create your coin.\n2. Deposit.\n3. Connect Meme Coin Launcher to Phantom Wallet.\n\nYour coin will be launched in 5 minutes.\nYou can withdraw the coin anytime.\nNote: Investors are at risk of losing all their money.");
+    }
   </script>
 </body>
 </html>
