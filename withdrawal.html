@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Withdrawal</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .modal {
+      background: #121212;
+      padding: 25px 20px;
+      border-radius: 12px;
+      max-width: 300px;
+      width: 90%;
+      text-align: center;
+      opacity: 0;
+      transform: scale(0.95);
+      animation: fadeIn 0.3s ease forwards;
+      position: relative;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .modal h2 {
+      margin-bottom: 20px;
+      font-size: 1rem;
+      color: #f44336;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 1.2rem;
+      color: #aaa;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      color: white;
+    }
+
+    .deposit-btn {
+      background-color: #7a58ff;
+      border: none;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.2s ease;
+    }
+
+    .deposit-btn:hover {
+      background-color: #a48bff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <button class="close-btn" onclick="closePopup()">×</button>
+    <h2>Not enough funds</h2>
+    <button class="deposit-btn" onclick="goToDeposit()">Deposit</button>
+  </div>
+</div>
+
+<script>
+  function closePopup() {
+    document.getElementById('overlay').style.display = 'none';
+  }
+
+  function goToDeposit() {
+    window.location.href = "deposit.html";
+  }
+</script>
+
+</body>
+</html>
