@@ -33,67 +33,88 @@
       border-radius: 15px;
       width: 100%;
       max-width: 400px;
-      box-shadow: 0 0 25px rgba(122, 88, 255, 0.35);
+      opacity: 0;
+      transform: scale(0.95);
+      animation: fadeInScale 0.4s ease forwards;
+      position: relative;
+    }
+
+    @keyframes fadeInScale {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.2rem;
+      color: #aaa;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      color: #fff;
     }
 
     .modal h2 {
       text-align: center;
       font-size: 1.2rem;
       margin-bottom: 25px;
-      color: #c2b6ff;
+      color: #d0ceff;
     }
 
     .wallet {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 10px 0;
-      padding: 10px;
+      flex-direction: column;
       background-color: #1a1a1a;
       border-radius: 10px;
-      flex-wrap: wrap;
+      margin-bottom: 15px;
+      padding: 10px;
     }
 
     .wallet-info {
-      flex: 1 1 auto;
+      margin-bottom: 10px;
     }
 
     .wallet-info div {
       font-weight: bold;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
 
     .wallet-info span {
       font-size: 0.75rem;
       color: #aaa;
-      word-break: break-all;
+      word-break: break-word;
     }
 
     .copy-section {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-top: 10px;
+      justify-content: space-between;
     }
 
     .copy-btn {
-      background-color: #7a58ff;
+      background-color: #444;
+      color: white;
       border: none;
-      padding: 6px 10px;
+      padding: 6px 12px;
       border-radius: 8px;
       cursor: pointer;
-      color: white;
       font-size: 0.75rem;
-      white-space: nowrap;
     }
 
     .copy-btn:hover {
-      background-color: #a590ff;
+      background-color: #666;
     }
 
     .copy-msg {
       font-size: 0.75rem;
-      color: #7a58ff;
+      color: #4caf50;
       opacity: 0;
       transition: opacity 0.3s ease;
     }
@@ -106,30 +127,35 @@
       .modal {
         padding: 15px;
       }
-      .wallet {
+
+      .copy-section {
         flex-direction: column;
         align-items: flex-start;
+        gap: 8px;
       }
-      .copy-section {
-        margin-top: 10px;
+
+      .close-btn {
+        top: 8px;
+        right: 10px;
       }
     }
   </style>
 </head>
 <body>
 
-<div class="overlay">
+<div class="overlay" id="overlay">
   <div class="modal">
+    <button class="close-btn" onclick="closeModal()">×</button>
     <h2>Choose Deposit Method</h2>
 
-    <!-- Wallet Rows -->
+    <!-- Wallet Sections -->
     <div class="wallet">
       <div class="wallet-info">
         <div>BTC (Bitcoin)</div>
         <span id="btc">bc1qu50rr0jnzhkgaq0gyywa9jwq0rmftm9exulgkf</span>
       </div>
       <div class="copy-section">
-        <button class="copy-btn" onclick="copy('btc')" aria-label="Copy BTC address">Copy</button>
+        <button class="copy-btn" onclick="copyToClipboard('btc', 'msg-btc')">Copy</button>
         <span class="copy-msg" id="msg-btc">Copied!</span>
       </div>
     </div>
@@ -140,7 +166,7 @@
         <span id="eth">0xb95a0cB3C276ef422350119a98A08eDC69AE826e</span>
       </div>
       <div class="copy-section">
-        <button class="copy-btn" onclick="copy('eth')" aria-label="Copy ETH address">Copy</button>
+        <button class="copy-btn" onclick="copyToClipboard('eth', 'msg-eth')">Copy</button>
         <span class="copy-msg" id="msg-eth">Copied!</span>
       </div>
     </div>
@@ -151,7 +177,7 @@
         <span id="sol">Esushsqu6K3dF99FZHDNeWUZaXhfQQsgQTxXfqRvpfBk</span>
       </div>
       <div class="copy-section">
-        <button class="copy-btn" onclick="copy('sol')" aria-label="Copy SOL address">Copy</button>
+        <button class="copy-btn" onclick="copyToClipboard('sol', 'msg-sol')">Copy</button>
         <span class="copy-msg" id="msg-sol">Copied!</span>
       </div>
     </div>
@@ -162,7 +188,7 @@
         <span id="twt">0xb95a0cB3C276ef422350119a98A08eDC69AE826e</span>
       </div>
       <div class="copy-section">
-        <button class="copy-btn" onclick="copy('twt')" aria-label="Copy TWT address">Copy</button>
+        <button class="copy-btn" onclick="copyToClipboard('twt', 'msg-twt')">Copy</button>
         <span class="copy-msg" id="msg-twt">Copied!</span>
       </div>
     </div>
@@ -173,7 +199,7 @@
         <span id="bnb">0xb95a0cB3C276ef422350119a98A08eDC69AE826e</span>
       </div>
       <div class="copy-section">
-        <button class="copy-btn" onclick="copy('bnb')" aria-label="Copy BNB address">Copy</button>
+        <button class="copy-btn" onclick="copyToClipboard('bnb', 'msg-bnb')">Copy</button>
         <span class="copy-msg" id="msg-bnb">Copied!</span>
       </div>
     </div>
@@ -184,7 +210,39 @@
         <span id="usdt">0xb95a0cB3C276ef422350119a98A08eDC69AE826e</span>
       </div>
       <div class="copy-section">
-        <button class="copy-btn" onclick="copy('usdt')" aria-label="Copy USDT address">Copy</button>
-        <span class="copy-msg" id="msg-usdt">Copied!</span
-::contentReference[oaicite:5]{index=5}
- 
+        <button class="copy-btn" onclick="copyToClipboard('usdt', 'msg-usdt')">Copy</button>
+        <span class="copy-msg" id="msg-usdt">Copied!</span>
+      </div>
+    </div>
+
+    <div class="wallet">
+      <div class="wallet-info">
+        <div>USDC (Ethereum)</div>
+        <span id="usdc">0xb95a0cB3C276ef422350119a98A08eDC69AE826e</span>
+      </div>
+      <div class="copy-section">
+        <button class="copy-btn" onclick="copyToClipboard('usdc', 'msg-usdc')">Copy</button>
+        <span class="copy-msg" id="msg-usdc">Copied!</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function copyToClipboard(spanId, msgId) {
+    const text = document.getElementById(spanId).textContent;
+    const msgEl = document.getElementById(msgId);
+
+    navigator.clipboard.writeText(text).then(() => {
+      msgEl.classList.add('visible');
+      setTimeout(() => msgEl.classList.remove('visible'), 1500);
+    });
+  }
+
+  function closeModal() {
+    document.getElementById('overlay').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
