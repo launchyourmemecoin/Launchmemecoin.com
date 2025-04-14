@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #000; /* pure black for consistency */
+      background-color: #000;
     }
 
     .overlay {
@@ -51,24 +51,29 @@
       padding: 10px;
       background-color: #1a1a1a;
       border-radius: 10px;
+      flex-wrap: wrap;
     }
 
     .wallet-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex: 1;
+      flex: 1 1 auto;
     }
 
-    .wallet img {
-      width: 28px;
-      height: 28px;
+    .wallet-info div {
+      font-weight: bold;
+      margin-bottom: 5px;
     }
 
-    .wallet span {
+    .wallet-info span {
       font-size: 0.75rem;
       color: #aaa;
       word-break: break-all;
+    }
+
+    .copy-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
     }
 
     .copy-btn {
@@ -86,6 +91,17 @@
       background-color: #a590ff;
     }
 
+    .copy-msg {
+      font-size: 0.75rem;
+      color: #7a58ff;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .copy-msg.visible {
+      opacity: 1;
+    }
+
     @media (max-width: 480px) {
       .modal {
         padding: 15px;
@@ -93,13 +109,9 @@
       .wallet {
         flex-direction: column;
         align-items: flex-start;
-        gap: 10px;
       }
-      .wallet-info {
-        flex-direction: row;
-      }
-      .copy-btn {
-        align-self: flex-end;
+      .copy-section {
+        margin-top: 10px;
       }
     }
   </style>
@@ -113,94 +125,66 @@
     <!-- Wallet Rows -->
     <div class="wallet">
       <div class="wallet-info">
-        <img src="https://bitcoin-btc-logo.png" alt="BTC">
-        <div>
-          <div><strong>BTC</strong> (Bitcoin)</div>
-          <span id="btc">bc1qu50rr0jnzhkgaq0gyywa9jwq0rmftm9exulgkf</span>
-        </div>
+        <div>BTC (Bitcoin)</div>
+        <span id="btc">bc1qu50rr0jnzhkgaq0gyywa9jwq0rmftm9exulgkf</span>
       </div>
-      <button class="copy-btn" onclick="copy('btc')">Copy</button>
+      <div class="copy-section">
+        <button class="copy-btn" onclick="copy('btc')" aria-label="Copy BTC address">Copy</button>
+        <span class="copy-msg" id="msg-btc">Copied!</span>
+      </div>
     </div>
 
     <div class="wallet">
       <div class="wallet-info">
-        <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH">
-        <div>
-          <div><strong>ETH</strong> (Ethereum)</div>
-          <span id="eth">0xb95a0cB3C276ef422350119a98A08eDC69AE826e</span>
-        </div>
+        <div>ETH (Ethereum)</div>
+        <span id="eth">0xb95a0cB3C276ef422350119a98A08eDC69AE826e</span>
       </div>
-      <button class="copy-btn" onclick="copy('eth')">Copy</button>
+      <div class="copy-section">
+        <button class="copy-btn" onclick="copy('eth')" aria-label="Copy ETH address">Copy</button>
+        <span class="copy-msg" id="msg-eth">Copied!</span>
+      </div>
     </div>
 
     <div class="wallet">
       <div class="wallet-info">
-        <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="SOL">
-        <div>
-          <div><strong>SOL</strong> (Solana)</div>
-          <span id="sol">Esushsqu6K3dF99FZHDNeWUZaXhfQQsgQTxXfqRvpfBk</span>
-        </div>
+        <div>SOL (Solana)</div>
+        <span id="sol">Esushsqu6K3dF99FZHDNeWUZaXhfQQsgQTxXfqRvpfBk</span>
       </div>
-      <button class="copy-btn" onclick="copy('sol')">Copy</button>
+      <div class="copy-section">
+        <button class="copy-btn" onclick="copy('sol')" aria-label="Copy SOL address">Copy</button>
+        <span class="copy-msg" id="msg-sol">Copied!</span>
+      </div>
     </div>
 
     <div class="wallet">
       <div class="wallet-info">
-        <img src="https://cryptologos.cc/logos/trust-wallet-token-twt-logo.png" alt="TWT">
-        <div>
-          <div><strong>TWT</strong> (BNB Smart Chain)</div>
-          <span id="twt">0xb95a0cB3C276ef422350119a98A08eDC69AE826e</span>
-        </div>
+        <div>TWT (BNB Smart Chain)</div>
+        <span id="twt">0xb95a0cB3C276ef422350119a98A08eDC69AE826e</span>
       </div>
-      <button class="copy-btn" onclick="copy('twt')">Copy</button>
+      <div class="copy-section">
+        <button class="copy-btn" onclick="copy('twt')" aria-label="Copy TWT address">Copy</button>
+        <span class="copy-msg" id="msg-twt">Copied!</span>
+      </div>
     </div>
 
     <div class="wallet">
       <div class="wallet-info">
-        <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="BNB">
-        <div>
-          <div><strong>BNB</strong> (BNB Smart Chain)</div>
-          <span id="bnb">0xb95a0cB3C276ef422350119a98A08eDC69AE826e</span>
-        </div>
+        <div>BNB (BNB Smart Chain)</div>
+        <span id="bnb">0xb95a0cB3C276ef422350119a98A08eDC69AE826e</span>
       </div>
-      <button class="copy-btn" onclick="copy('bnb')">Copy</button>
+      <div class="copy-section">
+        <button class="copy-btn" onclick="copy('bnb')" aria-label="Copy BNB address">Copy</button>
+        <span class="copy-msg" id="msg-bnb">Copied!</span>
+      </div>
     </div>
 
     <div class="wallet">
       <div class="wallet-info">
-        <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT">
-        <div>
-          <div><strong>USDT</strong> (Ethereum)</div>
-          <span id="usdt">0xb95a0cB3C276ef422350119a98A08eDC69AE826e</span>
-        </div>
+        <div>USDT (Ethereum)</div>
+        <span id="usdt">0xb95a0cB3C276ef422350119a98A08eDC69AE826e</span>
       </div>
-      <button class="copy-btn" onclick="copy('usdt')">Copy</button>
-    </div>
-
-    <div class="wallet">
-      <div class="wallet-info">
-        <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png" alt="USDC">
-        <div>
-          <div><strong>USDC</strong> (Ethereum)</div>
-          <span id="usdc">0xb95a0cB3C276ef422350119a98A08eDC69AE826e</span>
-        </div>
-      </div>
-      <button class="copy-btn" onclick="copy('usdc')">Copy</button>
-    </div>
-
-  </div>
-</div>
-
-<script>
-  function copy(id) {
-    const text = document.getElementById(id).textContent;
-    navigator.clipboard.writeText(text).then(() => {
-      const msg = `${id.toUpperCase()} address copied!`;
-      console.log(msg);
-      alert(msg);
-    });
-  }
-</script>
-
-</body>
-</html>
+      <div class="copy-section">
+        <button class="copy-btn" onclick="copy('usdt')" aria-label="Copy USDT address">Copy</button>
+        <span class="copy-msg" id="msg-usdt">Copied!</span
+::contentReference[oaicite:5]{index=5}
+ 
