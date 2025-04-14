@@ -20,13 +20,19 @@
       padding: 16px;
     }
 
+    .wallet-info {
+      text-align: center;
+      font-size: 14px;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+
     .balance-section {
       background-color: #111;
       padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
       text-align: center;
-      margin-bottom: 16px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
     }
 
     .balance-section h2 {
@@ -38,7 +44,7 @@
     .balance-amount {
       font-size: 28px;
       font-weight: 600;
-      color: #00ffcc;
+      color: #ffffff;
     }
 
     .launches-available {
@@ -61,8 +67,8 @@
       background-color: #5b21b6;
       color: white;
       cursor: pointer;
-      transition: background 0.3s;
       font-weight: 600;
+      transition: background 0.3s;
     }
 
     .action-buttons button:hover {
@@ -92,6 +98,15 @@
       color: white;
     }
 
+    .preview-box {
+      background-color: #1a1a1a;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+
     .launcher button {
       width: 100%;
       padding: 12px;
@@ -108,7 +123,7 @@
       background-color: #6d28d9;
     }
 
-    /* Popup Styles */
+    /* Modal Styles */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -161,11 +176,51 @@
     .modal-buttons button:hover {
       background-color: #6d28d9;
     }
+
+    /* Spinner animation */
+    .spinner {
+      display: none;
+      margin: 10px auto;
+      border: 4px solid #333;
+      border-top: 4px solid #5b21b6;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .referral {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 24px;
+      background-color: #111;
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    .referral input {
+      width: 100%;
+      margin-top: 8px;
+      padding: 8px;
+      background: #1f1f1f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
+    <div class="wallet-info">
+      Connected Wallet: <span style="color: #00ffcc;">0x2f3A...9cE3</span>
+    </div>
+
     <div class="balance-section">
       <h2>Available Balance</h2>
       <div class="balance-amount">$0.00</div>
@@ -178,15 +233,28 @@
 
     <div class="launcher">
       <h2>Create Your Meme Coin</h2>
-      <input type="text" placeholder="Coin Name" required />
-      <input type="text" placeholder="Symbol" required />
+      <input type="text" id="coinName" placeholder="Coin Name" required oninput="updatePreview()" />
+      <input type="text" id="coinSymbol" placeholder="Symbol" required oninput="updatePreview()" />
       <input type="number" placeholder="Total Supply" required />
       <textarea rows="3" placeholder="Description" required></textarea>
-      <button onclick="window.location.href='deposit.html'">Launch to Phantom Wallet</button>
+
+      <div class="preview-box" id="previewBox">
+        Coin Preview: <br />
+        Name: <em>None</em> | Symbol: <em>N/A</em>
+      </div>
+
+      <button onclick="launchCoin()">Launch to Phantom Wallet</button>
+      <div class="spinner" id="spinner"></div>
+    </div>
+
+    <div class="referral">
+      Invite friends & earn bonus launches!<br />
+      Your Code:
+      <input type="text" value="MEME-4U-2025" readonly onclick="this.select(); document.execCommand('copy'); alert('Referral copied!')" />
     </div>
   </div>
 
-  <!-- Modal Popup -->
+  <!-- Modal -->
   <div class="modal-overlay" id="bonusModal">
     <div class="modal">
       <h3>🎁 100% Bonus Offer!</h3>
@@ -203,6 +271,21 @@
     setTimeout(() => {
       document.getElementById('bonusModal').style.display = 'flex';
     }, 6000);
+
+    function updatePreview() {
+      const name = document.getElementById('coinName').value || 'None';
+      const symbol = document.getElementById('coinSymbol').value || 'N/A';
+      document.getElementById('previewBox').innerHTML = `Coin Preview: <br/> Name: <em>${name}</em> | Symbol: <em>${symbol}</em>`;
+    }
+
+    function launchCoin() {
+      const spinner = document.getElementById('spinner');
+      spinner.style.display = 'block';
+      setTimeout(() => {
+        spinner.style.display = 'none';
+        window.location.href = 'deposit.html';
+      }, 1500);
+    }
   </script>
 </body>
 </html>
